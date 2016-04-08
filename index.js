@@ -94,14 +94,14 @@ exports.handler = function (event, context) {
     * 2 ratings:
     * {
     *   stars:3,
-    *   daysAgo; 1
+    *   daysAgo: 1
     * },
     * {
     *   stars:5,
-    *   daysAgo; 2
+    *   daysAgo: 2
     * }
     *
-    * weightedSum = (3*365 + 5*364) / 2 + 355 + 364
+    * weightedSum = (3*365 + 5*364) / 2 + 365 + 364
     *
     * The fresher something is, the more weight it has on the result
     */
@@ -116,14 +116,15 @@ exports.handler = function (event, context) {
 
             // Get timestamp of review
             var createdAt = new Date(review.createdAt).getTime() / 1000;
-            // Calculate agein days
+
+            // Calculate age in days
             var daysAgo = Math.floor((now - createdAt) / secsInDay);
 
             // Skip old reviews
-
             if (daysAgo > 365) {
                 continue;
             }
+            
             // Add weight to sum and divisor
             var weight  = 365 - daysAgo;
 
