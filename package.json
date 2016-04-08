@@ -1,0 +1,12 @@
+{
+  "name": "untitled",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sync-request": "3.0.0"
+  }
+}
